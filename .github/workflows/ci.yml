@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -59,3 +59,17 @@ jobs:
 
       - name: Run Tests
         run: npm test
+
+      - name: Deploy to server by SSH
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /d D:\cicdproject
+            git pull
+            docker compose up -d --build  
+        
