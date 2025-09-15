@@ -54,9 +54,6 @@ jobs:
             sleep 3
           done
 
-      - name: Run Lint (optional)
-        run: npm run lint || true
-
       - name: Run Tests
         run: npm test
 
@@ -71,5 +68,6 @@ jobs:
           script: |
             cd /d D:\cicdproject
             git pull
-            docker compose up -d --build  
+            docker compose up -d --build
+
         
