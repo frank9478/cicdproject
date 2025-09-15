@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('Hello World!')
   console.log("啟動囉") 
-})  
+})   
 
 app.get('/test', (req, res) => {
   res.send('Test endpoint is working!')
